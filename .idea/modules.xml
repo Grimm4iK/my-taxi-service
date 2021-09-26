@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/my-taxi-service/bom/bom.iml" filepath="$PROJECT_DIR$/my-taxi-service/bom/bom.iml" />
+      <module fileurl="file://$PROJECT_DIR$/my-taxi-service/common/common.iml" filepath="$PROJECT_DIR$/my-taxi-service/common/common.iml" />
+      <module fileurl="file://$PROJECT_DIR$/my-taxi-service/core/core.iml" filepath="$PROJECT_DIR$/my-taxi-service/core/core.iml" />
+      <module fileurl="file://$PROJECT_DIR$/my-taxi-service/migration/migration.iml" filepath="$PROJECT_DIR$/my-taxi-service/migration/migration.iml" />
+      <module fileurl="file://$PROJECT_DIR$/my-taxi-service/my-taxi-service.iml" filepath="$PROJECT_DIR$/my-taxi-service/my-taxi-service.iml" />
+    </modules>
+  </component>
+</project>
