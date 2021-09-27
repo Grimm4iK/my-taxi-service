@@ -5,7 +5,7 @@
         xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
 
-    <changeSet id="2021-09-18 19:00:00" author="skuznetsov">
+    <changeSet id="2021-09-18 19:00:00" author="adrian">
         <sqlFile path="sql/core/taxi_drive_info.sql" relativeToChangelogFile="true"/>
         <rollback>
             <sqlFile path="core/rollback/taxi_drive_info_rollback.sql" relativeToChangelogFile="true"/>
