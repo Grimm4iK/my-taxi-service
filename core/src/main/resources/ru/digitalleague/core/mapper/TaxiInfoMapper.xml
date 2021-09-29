@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="ru.digitalleague.core.mapper.TaxiInfoMapper">
+    <resultMap id="taxiDriver"
+               type="ru.digitalleague.core.model.TaxiDriverInfoModel">
+        <id property="driverId" column="driver_id"/>
+        <result property="lastName" column="last_name"/>
+        <result property="firstName" column="first_name"/>
+        <result property="middleName" column="middle_name"/>
+        <result property="level" column="level"/>
+        <result property="carModel" column="car_model"/>
+        <result property="createDttm" column="create_dttm"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        <!--@mbg.generated-->
+        driver_id, last_name, first_name, middle_name, "level", car_model, create_dttm
+    </sql>
+
+    <select id="getAllDrivers1" resultMap="taxiDriver">
+        SELECT driver_id, last_name, first_name, middle_name, level, car_model, create_dttm FROM taxi_drive_info
+    </select>
+
+    <select id="getCount1" resultType="java.lang.Integer">
+        select count(1) from taxi_drive_info
+    </select>
+
+    <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="taxiDriver">
+        <!--@mbg.generated-->
+        select
+        <include refid="Base_Column_List" />
+        from taxi_drive_info
+        where driver_id = #{driverId,jdbcType=BIGINT}
+    </select>
+
+    <select id="selectByLastName" parameterType="java.lang.String" resultMap="taxiDriver" useCache="false">
+        <!--@mbg.generated-->
+        select
+        <include refid="Base_Column_List" />
+        from taxi_drive_info
+        where last_name = #{lastName}
+    </select>
+
+    <insert id="insert" parameterType="ru.digitalleague.core.model.TaxiDriverInfoModel">
+        <!--@mbg.generated-->
+        <selectKey resultType="Long" keyProperty="driverId" order="BEFORE">
+            select nextval('taxi_driver_seq');
+        </selectKey>
+        insert into taxi_drive_info (driver_id, last_name, first_name,
+        middle_name, "level", car_model,
+        create_dttm)
+        values (#{driverId,jdbcType=BIGINT}, #{lastName,jdbcType=VARCHAR}, #{firstName,jdbcType=VARCHAR},
+        #{middleName,jdbcType=VARCHAR}, #{level,jdbcType=INTEGER}, #{carModel,jdbcType=VARCHAR},
+        #{createDttm,jdbcType=TIMESTAMP})
+    </insert>
+
+    <update id="updateByPrimaryKey" parameterType="ru.digitalleague.core.model.TaxiDriverInfoModel">
+        <!--@mbg.generated-->
+        update taxi_drive_info
+        set last_name = #{lastName,jdbcType=VARCHAR},
+        first_name = #{firstName,jdbcType=VARCHAR},
+        middle_name = #{middleName,jdbcType=VARCHAR},
+        "level" = #{level,jdbcType=INTEGER},
+        car_model = #{carModel,jdbcType=VARCHAR},
+        create_dttm = #{createDttm,jdbcType=TIMESTAMP}
+        where driver_id = #{driverId,jdbcType=BIGINT}
+    </update>
+</mapper>

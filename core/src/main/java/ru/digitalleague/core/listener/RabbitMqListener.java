@@ -1,19 +1,24 @@
 package ru.digitalleague.core.listener;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import lombok.extern.slf4j.Slf4j;
+
 import org.springframework.amqp.rabbit.annotation.EnableRabbit;
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
+import org.springframework.amqp.rabbit.core.RabbitTemplate;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnBean;
 import org.springframework.stereotype.Component;
 
-@EnableRabbit
 @Component
+@EnableRabbit
+@Slf4j
+@ConditionalOnBean(value = RabbitTemplate.class)
 public class RabbitMqListener {
-    Logger logger = LoggerFactory.getLogger(RabbitMqListener.class);
 
-    @RabbitListener(queues = "order")
-    public void orderProcessQueue(String message) {
-        logger.info("Message from queue 1: " + message);
-        System.out.println("Message from queue 1: " + message);
+    /**
+     * Получаем информацию о заказе.
+     */
+    @RabbitListener(queues = "trip-result")
+    public void processRabbitMessage(String message) {
+        log.info("Поездка завершена " + message);
     }
 }

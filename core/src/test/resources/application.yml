@@ -1,0 +1,6 @@
+application:
+  rabbit:
+    enable: false
+logging:
+  level:
+    ru.digitalleague.core: debug

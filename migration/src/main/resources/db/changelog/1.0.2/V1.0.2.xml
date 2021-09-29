@@ -8,7 +8,21 @@
     <changeSet id="2021-09-18 19:00:00" author="adrian">
         <sqlFile path="sql/core/taxi_drive_info.sql" relativeToChangelogFile="true"/>
         <rollback>
-            <sqlFile path="core/rollback/taxi_drive_info_rollback.sql" relativeToChangelogFile="true"/>
+            <sqlFile path="sql/core/rollback/taxi_drive_info_rollback.sql" relativeToChangelogFile="true"/>
+        </rollback>
+    </changeSet>
+
+    <changeSet id="2021-09-28 19:00:00" author="adrian">
+        <sqlFile path="sql/core/city_queue.sql" relativeToChangelogFile="true"/>
+        <rollback>
+            <sqlFile path="sql/core/rollback/city_queue_rollback.sql" relativeToChangelogFile="true"/>
+        </rollback>
+    </changeSet>
+
+    <changeSet id="2021-09-28 20:00:00" author="adrian">
+        <sqlFile path="sql/core/alter_taxi_driver_info.sql" relativeToChangelogFile="true"/>
+        <rollback>
+            <sqlFile path="sql/core/rollback/alter_taxi_info_rollback.sql" relativeToChangelogFile="true"/>
         </rollback>
     </changeSet>
 
