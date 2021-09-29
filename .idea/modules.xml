@@ -2,11 +2,11 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/my-taxi-service/bom/bom.iml" filepath="$PROJECT_DIR$/my-taxi-service/bom/bom.iml" />
-      <module fileurl="file://$PROJECT_DIR$/my-taxi-service/common/common.iml" filepath="$PROJECT_DIR$/my-taxi-service/common/common.iml" />
-      <module fileurl="file://$PROJECT_DIR$/my-taxi-service/core/core.iml" filepath="$PROJECT_DIR$/my-taxi-service/core/core.iml" />
-      <module fileurl="file://$PROJECT_DIR$/my-taxi-service/migration/migration.iml" filepath="$PROJECT_DIR$/my-taxi-service/migration/migration.iml" />
-      <module fileurl="file://$PROJECT_DIR$/my-taxi-service/my-taxi-service.iml" filepath="$PROJECT_DIR$/my-taxi-service/my-taxi-service.iml" />
+      <module fileurl="file://$PROJECT_DIR$/bom/bom.iml" filepath="$PROJECT_DIR$/bom/bom.iml" />
+      <module fileurl="file://$PROJECT_DIR$/common/common.iml" filepath="$PROJECT_DIR$/common/common.iml" />
+      <module fileurl="file://$PROJECT_DIR$/core/core.iml" filepath="$PROJECT_DIR$/core/core.iml" />
+      <module fileurl="file://$PROJECT_DIR$/migration/migration.iml" filepath="$PROJECT_DIR$/migration/migration.iml" />
+      <module fileurl="file://$PROJECT_DIR$/my-taxi-service.iml" filepath="$PROJECT_DIR$/my-taxi-service.iml" />
     </modules>
   </component>
 </project>
