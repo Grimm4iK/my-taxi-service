@@ -3,14 +3,11 @@ package ru.digitalleague.core.service;
 import lombok.RequiredArgsConstructor;
 import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
-
 import java.util.List;
-
 import org.springframework.retry.annotation.Retryable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Isolation;
 import org.springframework.transaction.annotation.Transactional;
-
 import ru.digitalleague.core.mapper.TaxiInfoMapper;
 import ru.digitalleague.core.model.TaxiDriverInfoModel;
 
