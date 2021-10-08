@@ -1,7 +1,6 @@
 package ru.digitalleague.core.service;
 
 import ru.digitalleague.core.model.CarDetails;
-import ru.digitalleague.core.model.TaxiDriverInfoModel;
 
 import java.util.List;
 

@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="ru.digitalleague.core.mapper.UserAccountEntityMapper">
+    <resultMap id="BaseResultMap" type="ru.digitalleague.core.model.UserAccountEntity">
+        <!--@mbg.generated-->
+        <!--@Table user_account-->
+        <id column="id" jdbcType="BIGINT" property="id"/>
+        <result column="login" jdbcType="VARCHAR" property="login"/>
+        <result column="password" jdbcType="VARCHAR" property="password"/>
+        <collection property="authorities" resultMap="ru.digitalleague.core.mapper.AuthorityEntityMapper.BaseResultMap"
+                    columnPrefix="a_" autoMapping="true">
+        </collection>
+    </resultMap>
+    <sql id="Base_Column_List">
+        <!--@mbg.generated-->
+        id, "login", "password"
+    </sql>
+    <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+        <!--@mbg.generated-->
+        select
+        <include refid="Base_Column_List"/>
+        from user_account
+        where id = #{id,jdbcType=BIGINT}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+        <!--@mbg.generated-->
+        delete
+        from user_account
+        where id = #{id,jdbcType=BIGINT}
+    </delete>
+    <insert id="insert" parameterType="ru.digitalleague.core.model.UserAccountEntity">
+        <!--@mbg.generated-->
+        <selectKey resultType="Long" keyProperty="id" order="BEFORE">
+            select nextval('user_account_id_seq');
+        </selectKey>
+        insert into user_account (id, "login", "password")
+        values (#{id,jdbcType=BIGINT}, #{login,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR})
+    </insert>
+    <insert id="insertSelective" parameterType="ru.digitalleague.core.model.UserAccountEntity">
+        <!--@mbg.generated-->
+        insert into user_account
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                id,
+            </if>
+            <if test="login != null">
+                "login",
+            </if>
+            <if test="password != null">
+                "password",
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id,jdbcType=BIGINT},
+            </if>
+            <if test="login != null">
+                #{login,jdbcType=VARCHAR},
+            </if>
+            <if test="password != null">
+                #{password,jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="ru.digitalleague.core.model.UserAccountEntity">
+        <!--@mbg.generated-->
+        update user_account
+        <set>
+            <if test="login != null">
+                "login" = #{login,jdbcType=VARCHAR},
+            </if>
+            <if test="password != null">
+                "password" = #{password,jdbcType=VARCHAR},
+            </if>
+        </set>
+        where id = #{id,jdbcType=BIGINT}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="ru.digitalleague.core.model.UserAccountEntity">
+        <!--@mbg.generated-->
+        update user_account
+        set "login"    = #{login,jdbcType=VARCHAR},
+            "password" = #{password,jdbcType=VARCHAR}
+        where id = #{id,jdbcType=BIGINT}
+    </update>
+
+    <select id="findByLogin" resultMap="BaseResultMap">
+        select ua.id             as id,
+               ua.login          as login,
+               ua.password       as password,
+               a.id              as a_id,
+               a.user_account_id as a_user_account_id,
+               a.authority       as a_authority
+        from user_account ua
+                     left join authority a on a.user_account_id = ua.id
+        where ua.login = #{login,jdbcType=VARCHAR}
+    </select>
+</mapper>

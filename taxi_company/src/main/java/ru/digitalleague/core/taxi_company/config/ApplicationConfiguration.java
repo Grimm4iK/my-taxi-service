@@ -1,4 +1,4 @@
-package ru.digitalleague.taxi_company.config;
+package ru.digitalleague.core.taxi_company.config;
 
 import liquibase.integration.spring.SpringLiquibase;
 import lombok.extern.slf4j.Slf4j;
@@ -17,7 +17,7 @@ import org.springframework.boot.jdbc.DataSourceBuilder;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
-import ru.digitalleague.taxi_company.listener.OrderListener;
+import ru.digitalleague.core.taxi_company.listener.OrderListener;
 
 @Configuration
 @Slf4j

@@ -1,4 +1,4 @@
-package ru.digitalleague.taxi_company.controller;
+package ru.digitalleague.core.taxi_company.controller;
 
 import org.springframework.amqp.core.AmqpTemplate;
 import org.springframework.beans.factory.annotation.Autowired;

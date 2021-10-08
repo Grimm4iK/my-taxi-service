@@ -1,4 +1,4 @@
-package ru.digitalleague.taxi_company;
+package ru.digitalleague.core.taxi_company;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

@@ -8,8 +8,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import ru.digitalleague.core.model.OrderDetails;
 import ru.digitalleague.core.api.TaxiService;
+import ru.digitalleague.core.model.OrderDetails;
 
 @RestController
 @Slf4j

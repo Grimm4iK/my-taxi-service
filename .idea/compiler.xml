@@ -7,9 +7,10 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="common" />
         <module name="migration" />
+        <module name="taxi_company" />
         <module name="core" />
+        <module name="common" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
@@ -18,6 +19,7 @@
       <module name="core" target="1.8" />
       <module name="migration" target="1.8" />
       <module name="my-taxi-service" target="1.8" />
+      <module name="taxi_company" target="1.8" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
@@ -25,6 +27,7 @@
       <module name="common" options="-parameters" />
       <module name="core" options="-parameters" />
       <module name="migration" options="-parameters" />
+      <module name="taxi_company" options="-parameters" />
     </option>
   </component>
 </project>

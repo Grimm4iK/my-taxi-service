@@ -1,4 +1,4 @@
-package ru.digitalleague.taxi_company.listener;
+package ru.digitalleague.core.taxi_company.listener;
 
 import lombok.extern.slf4j.Slf4j;
 

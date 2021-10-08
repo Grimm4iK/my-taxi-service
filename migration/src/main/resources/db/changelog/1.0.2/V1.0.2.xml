@@ -26,4 +26,12 @@
         </rollback>
     </changeSet>
 
+    <changeSet id="2021-10-04 22:10:00" author="rgmusaev">
+        <sqlFile path="sql/core/user_account.sql" relativeToChangelogFile="true"/>
+    </changeSet>
+
+    <changeSet id="2021-10-04 22:11:00" author="rgmusaev">
+        <sqlFile path="sql/core/authority.sql" relativeToChangelogFile="true"/>
+    </changeSet>
+
 </databaseChangeLog>

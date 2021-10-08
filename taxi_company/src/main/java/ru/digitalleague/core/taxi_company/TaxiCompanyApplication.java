@@ -1,10 +1,10 @@
-package ru.digitalleague.taxi_company;
+package ru.digitalleague.core.taxi_company;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Import;
 
-import ru.digitalleague.taxi_company.config.ApplicationConfiguration;
+import ru.digitalleague.core.taxi_company.config.ApplicationConfiguration;
 
 @SpringBootApplication
 @Import(ApplicationConfiguration.class)
