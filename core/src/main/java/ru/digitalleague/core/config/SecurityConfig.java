@@ -24,22 +24,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/registration/**").permitAll()
                 .antMatchers("/home/**").permitAll()
                 .antMatchers("/forall/**").hasAnyAuthority("USER", "ADMIN")
-                .antMatchers("/admin/**").hasRole("ADMIN")
+                .antMatchers("/admin/**").hasAnyAuthority("ADMIN")
                 .and()
                 .formLogin()
                 .and()
                 .logout().logoutSuccessUrl("/home");
-    }
-
-    @Override
-    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        auth.inMemoryAuthentication().withUser("admin")
-                .password(passwordEncoder().encode("admin"))
-                .roles("ADMIN")
-                .and()
-                .withUser("user")
-                .password(passwordEncoder().encode("user"))
-                .roles("USER");
     }
 
     @Bean
