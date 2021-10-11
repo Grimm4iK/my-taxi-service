@@ -1,9 +1,7 @@
-package ru.digitalleague.core.taxi_company.model;
+package ru.digitalleague.core.model;
 
-import lombok.Data;
-
-@Data
 public class OrderDetails {
+
     /**
      * Идентификатор клиента.
      */
@@ -23,5 +21,4 @@ public class OrderDetails {
      * Название города.
      */
     private String city;
-
 }

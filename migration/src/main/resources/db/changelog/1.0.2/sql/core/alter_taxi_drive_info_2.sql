@@ -1,0 +1,1 @@
+alter table taxi_drive_info add column minute_cost int default 10;

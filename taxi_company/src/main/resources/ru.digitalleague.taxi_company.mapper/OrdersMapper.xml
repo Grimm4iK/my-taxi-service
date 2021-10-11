@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="ru.digitalleague.taxi_company.mapper.OrderMapper">
+    <resultMap id="orders"
+               type="ru.digitalleague.taxi_company.model.Order">
+        <id property="driverId" column="driver_id"/>
+        <result property="clientNumber" column="last_name"/>
+        <result property="driverId" column="first_name"/>
+        <result property="startTrip" column="middle_name"/>
+        <result property="endTrip" column="level"/>
+    </resultMap>
+
+
+    <select id="getAllOrders" resultMap="orders">
+        SELECT driver_id, client_number, driver_id, start_trip, end_trip FROM orders
+    </select>
+
+    <insert id="saveOrder1">
+        insert into orders (order_id, client_number, driver_id, start_trip, end_trip)
+            values(#{orderId}, #{clientNumber}, #{driverId}, #{startTrip}, #{endTrip})
+    </insert>
+
+</mapper>

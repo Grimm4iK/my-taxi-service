@@ -18,7 +18,9 @@
     </sql>
 
     <select id="getAllDrivers1" resultMap="taxiDriver">
-        SELECT driver_id, last_name, first_name, middle_name, level, car_model, create_dttm FROM taxi_drive_info
+        SELECT driver_id, last_name, first_name,
+<!--               middle_name, -->
+               level, car_model, create_dttm FROM taxi_drive_info
     </select>
 
     <select id="getCount1" resultType="java.lang.Integer">
@@ -47,7 +49,8 @@
             select nextval('taxi_driver_seq');
         </selectKey>
         insert into taxi_drive_info (driver_id, last_name, first_name,
-        middle_name, "level", car_model,
+<!--        middle_name, -->
+        "level", car_model,
         create_dttm)
         values (#{driverId,jdbcType=BIGINT}, #{lastName,jdbcType=VARCHAR}, #{firstName,jdbcType=VARCHAR},
         #{middleName,jdbcType=VARCHAR}, #{level,jdbcType=INTEGER}, #{carModel,jdbcType=VARCHAR},
@@ -59,7 +62,7 @@
         update taxi_drive_info
         set last_name = #{lastName,jdbcType=VARCHAR},
         first_name = #{firstName,jdbcType=VARCHAR},
-        middle_name = #{middleName,jdbcType=VARCHAR},
+<!--        middle_name = #{middleName,jdbcType=VARCHAR},-->
         "level" = #{level,jdbcType=INTEGER},
         car_model = #{carModel,jdbcType=VARCHAR},
         create_dttm = #{createDttm,jdbcType=TIMESTAMP}

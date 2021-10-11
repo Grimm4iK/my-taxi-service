@@ -1,4 +1,4 @@
-package ru.digitalleague.core.taxi_company.model;
+package ru.digitalleague.taxi_company.model;
 
 import lombok.Data;
 
@@ -7,6 +7,9 @@ import java.time.OffsetDateTime;
 @Data
 public class TaxiDriverInfoModel {
 
+    /**
+     * Идентификатор водителя.
+     */
     private Long driverId;
 
     /**

@@ -11,12 +11,14 @@
         <module name="taxi_company" />
         <module name="core" />
         <module name="common" />
+        <module name="dto" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="bom" target="1.8" />
       <module name="common" target="1.8" />
       <module name="core" target="1.8" />
+      <module name="dto" target="1.8" />
       <module name="migration" target="1.8" />
       <module name="my-taxi-service" target="1.8" />
       <module name="taxi_company" target="1.8" />
@@ -26,6 +28,7 @@
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="common" options="-parameters" />
       <module name="core" options="-parameters" />
+      <module name="dto" options="-parameters" />
       <module name="migration" options="-parameters" />
       <module name="taxi_company" options="-parameters" />
     </option>

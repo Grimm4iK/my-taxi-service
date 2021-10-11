@@ -5,6 +5,7 @@
       <module fileurl="file://$PROJECT_DIR$/bom/bom.iml" filepath="$PROJECT_DIR$/bom/bom.iml" />
       <module fileurl="file://$PROJECT_DIR$/common/common.iml" filepath="$PROJECT_DIR$/common/common.iml" />
       <module fileurl="file://$PROJECT_DIR$/core/core.iml" filepath="$PROJECT_DIR$/core/core.iml" />
+      <module fileurl="file://$PROJECT_DIR$/dto/dto.iml" filepath="$PROJECT_DIR$/dto/dto.iml" />
       <module fileurl="file://$PROJECT_DIR$/migration/migration.iml" filepath="$PROJECT_DIR$/migration/migration.iml" />
       <module fileurl="file://$PROJECT_DIR$/my-taxi-service.iml" filepath="$PROJECT_DIR$/my-taxi-service.iml" />
       <module fileurl="file://$PROJECT_DIR$/taxi_company/taxi_company.iml" filepath="$PROJECT_DIR$/taxi_company/taxi_company.iml" />
