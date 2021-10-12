@@ -1,0 +1,1 @@
+alter table car alter column createDttm type date;
