@@ -6,7 +6,9 @@
 docker run -lt --rm --name rabbitmq -p 5672:5672 -p 15672:15672 rabbitmq:3-management
 
 docker run --help (информация о командах)
+
 docker ps - посмотреть запущенные контейнеры
+
 docker stop [название контейнера]
 
 #Описание процесса работы программы.
