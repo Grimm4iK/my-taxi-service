@@ -74,14 +74,5 @@ public class ApplicationConfiguration {
         return liquibase;
     }
 
-    @Bean
-    public MessageListenerContainer messageListenerContainer(ConnectionFactory connectionFactory) {
-        SimpleMessageListenerContainer simpleMessageListenerContainer = new SimpleMessageListenerContainer();
-        simpleMessageListenerContainer.setConnectionFactory(connectionFactory);
-        // устанавливаем очередь, которую будет слушать приложение
-        simpleMessageListenerContainer.setQueues(myQueue3());
-        simpleMessageListenerContainer.setMessageListener(new OrderListener());
-        return simpleMessageListenerContainer;
 
-    }
 }

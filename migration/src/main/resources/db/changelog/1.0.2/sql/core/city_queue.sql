@@ -5,9 +5,7 @@ create table if not exists city_queue
 (
     city_id bigint      not null default nextval('city_queue_seq' :: regclass),
     name    text        not null,
-    queue   varchar(30) not null,
-        constraint city_queue_id_pk
-            primary key (city_id)
+    queue   varchar(30) not null
 );
 
 comment on table city_queue is 'Очереди';

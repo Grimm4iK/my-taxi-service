@@ -7,9 +7,6 @@ import java.time.OffsetDateTime;
 @Data
 public class TaxiDriverInfoModel {
 
-    /**
-     * Идентификатор водителя.
-     */
     private Long driverId;
 
     /**
@@ -28,12 +25,17 @@ public class TaxiDriverInfoModel {
     private int level;
 
     /**
-     * Модель авто (должна быть ENUM).
+     * Модель авто.
      */
-    private String carModel;
+    private Long car;
 
     /**
      * Дата создания.
      */
     private OffsetDateTime createDttm;
+
+    private String city;
+    private Boolean available;
+    private Double rating;
+
 }

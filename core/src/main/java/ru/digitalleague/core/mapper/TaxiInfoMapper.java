@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.*;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 import ru.digitalleague.core.model.TaxiDriverInfoModel;
 
 @Repository
@@ -37,4 +38,8 @@ public interface TaxiInfoMapper {
     int updateByPrimaryKey(TaxiDriverInfoModel record);
 
     List<TaxiDriverInfoModel> selectByLastName(String lastName);
+
+    @Transactional
+    @Update("update taxi_drive_info set available = true where driver_id = #{id} ")
+    void setFree(Long id);
 }

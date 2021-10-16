@@ -1,15 +1,35 @@
 package ru.digitalleague.taxi_company.listener;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.extern.slf4j.Slf4j;
 
 import org.springframework.amqp.core.Message;
 import org.springframework.amqp.core.MessageListener;
+import org.springframework.amqp.rabbit.annotation.EnableRabbit;
+import org.springframework.amqp.rabbit.annotation.RabbitListener;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+import ru.digitalleague.taxi_company.model.OrderDetails;
+import ru.digitalleague.taxi_company.service.OrderService;
+
+import java.io.IOException;
 
 @Slf4j
-public class OrderListener implements MessageListener {
+@Component
+public class OrderListener {
+    @Autowired
+    private ObjectMapper objectMapper;
+    @Autowired
+    private OrderService orderService;
 
-    @Override
-    public void onMessage(Message message) {
-        log.info("Received message from rabbitmq " + message);
+    @RabbitListener(queues = "${application.broker.receive-queue}")
+    public void onMessage(Message message) throws IOException {
+        log.info("Полученное сообщение из rabbitmq " + message);
+        OrderDetails orderDetails = objectMapper.readValue(message.getBody(), OrderDetails.class);
+        Long driverId = orderService.getDriverIDByCriteria(orderDetails.getCity(), orderDetails.getLevel(), orderDetails.getCarModel());
+        orderService.createOrder(orderDetails.getClientNumber(), driverId);
+        Long orderId = orderService.findOrderByIds(orderDetails.getClientNumber(), driverId);
+        log.info(String.format("Заказ №%d, клиент №%d, водитель №%d", orderId, orderDetails.getClientNumber(), driverId));
+        orderService.setUnavailable(driverId);
     }
 }

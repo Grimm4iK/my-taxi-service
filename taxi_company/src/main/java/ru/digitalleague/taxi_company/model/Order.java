@@ -1,35 +1,18 @@
 package ru.digitalleague.taxi_company.model;
 
 import lombok.Data;
+import org.springframework.stereotype.Component;
 
-import java.time.OffsetDateTime;
+import java.util.Date;
 
 @Data
+@Component
 public class Order {
-
-    /**
-     * Идентификатор поездки.
-     */
-    private Long orderId;
-
-    /**
-     * Идентификатор клиента.
-     */
-    private Long clientNumber;
-
-    /**
-     * Идентификатор водителя.
-     */
+    private Long id;
+    private Long clientId;
+    private Date start;
+    private Date end;
     private Long driverId;
-
-    /**
-     * Дата, время начала поездки.
-     */
-    private OffsetDateTime startTrip;
-
-    /**
-     * Дата, время окончания поездки.
-     */
-    private OffsetDateTime endTrip;
-
+    private Double amount;
+    private Integer rating;
 }

@@ -1,1 +1,0 @@
-alter table city_queue drop column if exists port;

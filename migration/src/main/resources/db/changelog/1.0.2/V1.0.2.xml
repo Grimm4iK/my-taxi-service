@@ -26,57 +26,12 @@
         </rollback>
     </changeSet>
 
-    <changeSet id="2021-10-05 20:00:00" author="Adrian">
-        <sqlFile path="sql/core/alter_date_drive_info.sql" relativeToChangelogFile="true"/>
-        <rollback>
-            <sqlFile path="sql/core/rollback/alter_date_drive_info_rollback.sql" relativeToChangelogFile="true"/>
-        </rollback>
+    <changeSet id="2021-10-04 22:10:00" author="Adrian">
+        <sqlFile path="sql/core/user_account.sql" relativeToChangelogFile="true"/>
     </changeSet>
 
-    <changeSet id="2021-10-06 10:00:00" author="Adrian">
-        <sqlFile path="sql/core/orders.sql" relativeToChangelogFile="true"/>
-        <rollback>
-            <sqlFile path="sql/core/rollback/orders_rollback.sql" relativeToChangelogFile="true"/>
-        </rollback>
-    </changeSet>
-
-    <changeSet id="2021-10-06 12:00:00" author="Adrian">
-        <sqlFile path="sql/core/order_total.sql" relativeToChangelogFile="true"/>
-        <rollback>
-            <sqlFile path="sql/core/rollback/order_total_rollback.sql" relativeToChangelogFile="true"/>
-        </rollback>
-    </changeSet>
-
-    <changeSet id="2021-10-06 13:00:00" author="Adrian">
-        <sqlFile path="sql/core/alter_taxi_drive_info_2.sql" relativeToChangelogFile="true"/>
-        <rollback>
-            <sqlFile path="sql/core/rollback/alter_taxi_drive_info_2_rollback.sql" relativeToChangelogFile="true"/>
-        </rollback>
-    </changeSet>
-
-    <changeSet id="2021-10-07 13:00:00" author="Adrian">
-        <sqlFile path="sql/core/alter_order.sql" relativeToChangelogFile="true"/>
-        <rollback>
-            <sqlFile path="sql/core/rollback/alter_orders_rollback.sql" relativeToChangelogFile="true"/>
-        </rollback>
-    </changeSet>
-
-    <changeSet id="2021-10-10 13:00:00" author="Adrian">
-        <sqlFile path="sql/core/alter_taxi_driver_info_3.sql" relativeToChangelogFile="true"/>
-        <rollback>
-            <sqlFile path="sql/core/rollback/alter_taxi_driver_info_3_rollback.sql" relativeToChangelogFile="true"/>
-        </rollback>
-    </changeSet>
-
-    <changeSet id="2021-10-10 13:01:00" author="Adrian">
-        <sqlFile path="sql/core/alter_city_queue.sql" relativeToChangelogFile="true"/>
-        <rollback>
-            <sqlFile path="sql/core/rollback/alter_city_queue_rollback.sql" relativeToChangelogFile="true"/>
-        </rollback>
-    </changeSet>
-
-    <changeSet id="2021-10-10 14:01:00" author="Adrian">
-        <sqlFile path="sql/core/alter_car.sql" relativeToChangelogFile="true"/>
+    <changeSet id="2021-10-04 22:11:00" author="Adrian">
+        <sqlFile path="sql/core/authority.sql" relativeToChangelogFile="true"/>
     </changeSet>
 
 </databaseChangeLog>

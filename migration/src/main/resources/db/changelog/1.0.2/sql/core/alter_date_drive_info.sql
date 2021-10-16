@@ -1,1 +1,0 @@
-alter table taxi_drive_info alter column create_dttm type date;
