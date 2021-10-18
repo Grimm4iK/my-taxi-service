@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import ru.digitalleague.taxi_company.model.OrderDetails;
 import ru.digitalleague.taxi_company.service.OrderService;
+import ru.digitalleague.taxi_company.service.TaxiDriverService;
 
 import java.io.IOException;
 
@@ -21,15 +22,16 @@ public class OrderListener {
     private ObjectMapper objectMapper;
     @Autowired
     private OrderService orderService;
+    @Autowired
+    private TaxiDriverService taxiDriverService;
 
     @RabbitListener(queues = "${application.broker.receive-queue}")
     public void onMessage(Message message) throws IOException {
-        log.info("Полученное сообщение из rabbitmq " + message);
+        log.info("Получено сообщение из rabbitmq: " + message);
         OrderDetails orderDetails = objectMapper.readValue(message.getBody(), OrderDetails.class);
-        Long driverId = orderService.getDriverIDByCriteria(orderDetails.getCity(), orderDetails.getLevel(), orderDetails.getCarModel());
+        Long driverId = taxiDriverService.getDriverIDByCriteria(orderDetails.getCity(), orderDetails.getLevel(), orderDetails.getCarModel());
         orderService.createOrder(orderDetails.getClientNumber(), driverId);
         Long orderId = orderService.findOrderByIds(orderDetails.getClientNumber(), driverId);
         log.info(String.format("Заказ №%d, клиент №%d, водитель №%d", orderId, orderDetails.getClientNumber(), driverId));
-        orderService.setUnavailable(driverId);
     }
 }

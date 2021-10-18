@@ -2,7 +2,7 @@ alter table taxi_drive_info add column if not exists  city_id bigint;
 
 alter table taxi_drive_info add column if not exists rating int default 1 check (rating > 0 AND rating <= 5);
 
-alter table taxi_drive_info add column if not exists available boolean default false;
+alter table taxi_drive_info add column if not exists available boolean default true;
 
 alter table taxi_drive_info rename column car_model to car_id;
 

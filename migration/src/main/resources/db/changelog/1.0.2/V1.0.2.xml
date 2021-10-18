@@ -34,4 +34,22 @@
         <sqlFile path="sql/core/authority.sql" relativeToChangelogFile="true"/>
     </changeSet>
 
+    <changeSet id="2021-10-12 04:00:00" author="Adrian">
+        <sqlFile path="sql/core/orders.sql" relativeToChangelogFile="true"/>
+    </changeSet>
+
+    <changeSet id="2021-10-06 12:00:00" author="Adrian">
+        <sqlFile path="sql/core/order_total.sql" relativeToChangelogFile="true"/>
+        <rollback>
+            <sqlFile path="sql/core/rollback/order_total_rollback.sql" relativeToChangelogFile="true"/>
+        </rollback>
+    </changeSet>
+
+    <changeSet id="2021-10-12 04:11:00" author="Adrian">
+        <sqlFile path="sql/core/alter_city_queue.sql" relativeToChangelogFile="true"/>
+    </changeSet>
+    <changeSet id="2021-10-12 04:15:00" author="Adrian">
+        <sqlFile path="sql/core/taxi_drive_info_alter.sql" relativeToChangelogFile="true"/>
+    </changeSet>
+
 </databaseChangeLog>

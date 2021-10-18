@@ -38,8 +38,4 @@ public interface TaxiInfoMapper {
     int updateByPrimaryKey(TaxiDriverInfoModel record);
 
     List<TaxiDriverInfoModel> selectByLastName(String lastName);
-
-    @Transactional
-    @Update("update taxi_drive_info set available = true where driver_id = #{id} ")
-    void setFree(Long id);
 }

@@ -20,27 +20,25 @@ public interface OrderMapper {
      *
      * @param order заказ.
      */
-    @Insert(" insert into orders (id, client_id, driver_id, trip_start, trip_end, amount, rating)" +
-            " values(#{id}, #{clientId}, #{driverId}, #{start}, #{end}, #{amount}, #{rating})")
+    @Insert("insert into orders (id, client_id, driver_id, trip_start, trip_end, amount, rating)" +
+            "values(#{id}, #{clientId}, #{driverId}, #{start}, #{end}, #{amount}, #{rating})")
     void saveOrder(Order order);
 
     /**
      * Установить время начала поездки.
      *
      * @param id номер заказа.
-     * @param start время начала
      */
-    @Update("update orders set trip_start = #{start} where id = #{id}")
-    void setStart(Long id, OffsetDateTime start);
+    @Update("update orders set trip_start = now() where id = #{id}")
+    void setStart(Long id);
 
     /**
      * Установить время начала поездки.
      *
      * @param id номер заказа.
-     * @param end время начала
      */
-    @Update("update orders set trip_end = #{end} where id = #{id}")
-    void setEnd(Long id, OffsetDateTime end);
+    @Update("update orders set trip_end = now() where id = #{id}")
+    void setEnd(Long id);
 
     /**
      * Создать заказ.
@@ -57,14 +55,43 @@ public interface OrderMapper {
      * @param userId ID клиента.
      * @param driverId ID водителя.
      */
-    @Select("select id from orders where client_id = #{userId} and driver_id = #{driverId} order by id desc limit 1")
+    @Select("select id from orders where id = #{userId} and driver_id = #{driverId} order by id desc limit 1")
     Long findOrderByIds(Long userId, Long driverId);
 
-    @Select("select driver_id from taxi_drive_info tdi left join city_queue q on q.city_id = tdi.city_id "+
-            "left join car c on c.id = tdi.car_id where name = #{city} and level = #{level} and model = #{model} and available = true limit 1")
-    Long getDriverIDByCriteria(String city, Integer level, String model);
+    /**
+     * Получить последний оред ID.
+     */
+    @Select("select last_value from order_seq")
+    Long lastOrderId();
 
-    @Update("update taxi_drive_info set available = false where driver_id = #{id}")
-    void setUnavailable(Long id);
+    /**
+     * Сохранить сумму заказа
+     *  @param orderId ID заказа.
+     *  @param orderSum сумма заказа.
+     */
+    @Insert("INSERT INTO order_total (order_id, sum) SELECT #{orderId}, #{orderSum} WHERE NOT EXISTS (SELECT order_id FROM order_total WHERE order_id = #{orderId})")
+    void saveTotalOrderSum(Long orderId, Long orderSum);
+
+    /**
+     * Получить время начала поездки
+     *  @param orderId ID заказа.
+     */
+    @Select("select start_trip from orders where id = #{orderId}")
+    OffsetDateTime getTripStartTimeByOrderId(Long orderId);
+
+    /**
+     * Получить время окончания поездки
+     *  @param orderId ID заказа.
+     */
+    @Select("select end_trip from orders where id = #{orderId}")
+    OffsetDateTime getTripEndTimeByOrderId(Long orderId);
+
+    /**
+     * Находит идентификатор водителя
+     * @param id Идентификатор поездки
+     * @return Идентификатор водителя
+     */
+    @Select("SELECT driver_id FROM orders WHERE id = #{id}")
+    long findDriverIdByOrderId(long id);
 
 }

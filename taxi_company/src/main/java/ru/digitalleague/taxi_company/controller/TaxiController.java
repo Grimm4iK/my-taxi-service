@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 import ru.digitalleague.taxi_company.model.Order;
 import ru.digitalleague.taxi_company.service.OrderService;
+import ru.digitalleague.taxi_company.service.TaxiDriverService;
 
 import java.sql.Timestamp;
 import java.time.LocalDateTime;
@@ -26,6 +27,10 @@ public class TaxiController {
 
     @Autowired
     OrderService orderService;
+
+    @Autowired
+    private TaxiDriverService taxiDriverService;
+
     /**
      * Метод получает инфо о начале поездки.
      * @param order
@@ -34,8 +39,9 @@ public class TaxiController {
     @ApiOperation(value = "Контроллер устанавливающий время начала поездки")
     @PostMapping("/trip-start")
     public ResponseEntity<String> startTrip(@RequestBody Order order) {
+        taxiDriverService.setBusy(order.getId(), false);
         log.info(String.format("Клиент №%d начал поездку.", order.getClientId()));
-        orderService.updateOrderStartById(order.getId(), OffsetDateTime.now());
+        orderService.updateOrderStartById(order.getId());
         return ResponseEntity.ok("Поездка началась!");
     }
 
@@ -47,9 +53,9 @@ public class TaxiController {
     @ApiOperation(value = "Контроллер устанавливающий время конца поездки")
     @PostMapping("/trip-complete")
     public ResponseEntity<String> completeTrip(@RequestBody Order order) {
+        taxiDriverService.setBusy(order.getId(), true);
         log.info(String.format("Поездка №%d завершена", order.getId()));
-        orderService.updateOrderEndById(order.getId(), OffsetDateTime.now());
-        amqpTemplate.convertAndSend("trip-result", order.getDriverId());
+        orderService.updateOrderEndById(order.getId());
         return ResponseEntity.ok("Услуга оказана!");
     }
 }

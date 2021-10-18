@@ -10,16 +10,12 @@ import java.util.Date;
 public interface OrderService {
     void saveOrder(Order order);
 
-    void updateOrderStartById(Long id, OffsetDateTime start);
+    void updateOrderStartById(Long id);
 
-    void updateOrderEndById(Long id, OffsetDateTime end);
+    void updateOrderEndById(Long id);
 
     void createOrder(Long userId, Long driverId);
 
     Long findOrderByIds(Long userId, Long driverId);
-
-    Long getDriverIDByCriteria(String city, Integer level, String model);
-
-    void setUnavailable(Long id);
 
 }
