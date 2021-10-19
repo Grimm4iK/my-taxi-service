@@ -52,4 +52,8 @@
         <sqlFile path="sql/core/taxi_drive_info_alter.sql" relativeToChangelogFile="true"/>
     </changeSet>
 
+    <changeSet id="2021-10-19 14:01:00" author="Adrian">
+        <sqlFile path="sql/core/rating_taxi_driver.sql" relativeToChangelogFile="true"/>
+    </changeSet>
+
 </databaseChangeLog>

@@ -32,4 +32,13 @@ public interface TaxiDriverMapper {
     @Update("UPDATE taxi_drive_info SET available = #{available} WHERE driver_id = #{driverId}")
     void setBusy(long driverId, boolean available);
 
+    /**
+     * Установить водителю рейтинг
+     *
+     * @param driverId ID водителя
+     * @param rating рейтинг для водителя
+     */
+    @Update("UPDATE taxi_drive_info SET rating = #{rating} WHERE  driver_id = #{driverId}")
+    void saveAvgDriverRating(Long driverId, int rating);
+
 }

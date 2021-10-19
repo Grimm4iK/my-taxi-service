@@ -6,4 +6,6 @@ public interface TaxiDriverService {
 
     void setBusy(long id, boolean available);
 
+    void saveRatingTrip(long orderId, int rating);
+
 }

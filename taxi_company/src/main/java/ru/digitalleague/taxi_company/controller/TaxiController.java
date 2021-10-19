@@ -4,14 +4,15 @@ import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.amqp.core.AmqpTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import ru.digitalleague.taxi_company.api.OrderService;
 import ru.digitalleague.taxi_company.api.TaxiDriverService;
+import ru.digitalleague.taxi_company.mapper.OrderMapper;
 import ru.digitalleague.taxi_company.mapper.OrderTotalMapper;
 import ru.digitalleague.taxi_company.model.OrderModel;
+import ru.digitalleague.taxi_company.model.RatingModel;
 
 /**
  * Контроллер получающий информацию о поездке.
@@ -31,11 +32,13 @@ public class TaxiController {
     @Autowired
     OrderTotalMapper orderTotalMapper;
 
+    @Autowired
+    OrderMapper orderMapper;
+
     /**
      * Метод получает инфо о начале поездки.
      * @param orderModel
      * */
-
     @ApiOperation(value = "Контроллер устанавливающий время начала поездки")
     @PostMapping("/trip-start")
     public ResponseEntity<String> startTrip(@RequestBody OrderModel orderModel) {
@@ -49,7 +52,6 @@ public class TaxiController {
      * Метод получает инфо о завершении поездки.
      * @param orderModel
      * */
-
     @ApiOperation(value = "Контроллер устанавливающий время конца поездки")
     @PostMapping("/trip-complete")
     public ResponseEntity<String> completeTrip(@RequestBody OrderModel orderModel) {
@@ -62,5 +64,21 @@ public class TaxiController {
                 "Номер поездки: = " + orderModel.getId() +
                 " Цена поездки: = " + costTrip);
         return ResponseEntity.ok("Услуга оказана!");
+    }
+
+    /**
+     * Метод устанавливает рейтинг водителя
+     * @param orderId Идентификатор поездки
+     * @param rating оценка от 1 до 5
+     * */
+    @GetMapping("/rate-trip")
+    @ApiOperation(value = "Контроллер оценки поездки")
+    public ResponseEntity<String> gradeTrip(@RequestHeader("order_id") long orderId,
+                                            @RequestHeader("rating") int rating){
+        if(rating < 1 || rating > 5) {
+            return new ResponseEntity<>("Некорректная оценка. От 1 до 5.", HttpStatus.BAD_REQUEST);
+        }
+        taxiDriverService.saveRatingTrip(orderId, rating);
+        return new ResponseEntity<>("Спасибо за отзыв", HttpStatus.OK);
     }
 }
