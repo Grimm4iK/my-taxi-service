@@ -12,7 +12,7 @@ import java.util.Date;
 @Data
 @Component
 @ApiModel("Модель заказа")
-public class Order {
+public class OrderModel {
 
     /**
      * Идентификатор поездки.

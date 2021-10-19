@@ -8,8 +8,6 @@ create table if not exists orders
     trip_start timestamp,
     trip_end timestamp,
     driver_id bigint references taxi_drive_info(driver_id),
-    amount double precision,
-    rating int,
     primary key (id)
 
 

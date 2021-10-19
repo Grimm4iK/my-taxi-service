@@ -1,4 +1,4 @@
-package ru.digitalleague.taxi_company.service;
+package ru.digitalleague.taxi_company.api;
 
 public interface TaxiDriverService {
 

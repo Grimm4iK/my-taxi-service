@@ -4,6 +4,7 @@ import lombok.extern.slf4j.Slf4j;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import ru.digitalleague.taxi_company.api.TaxiDriverService;
 import ru.digitalleague.taxi_company.mapper.OrderMapper;
 import ru.digitalleague.taxi_company.mapper.TaxiDriverMapper;
 
