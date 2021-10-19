@@ -43,7 +43,7 @@ public class TaxiController {
     @PostMapping("/trip-start")
     public ResponseEntity<String> startTrip(@RequestBody OrderModel orderModel) {
         taxiDriverService.setBusy(orderModel.getId(), false);
-        log.info(String.format("Клиент №%d начал поездку.", orderModel.getClientId()));
+        log.info("Поездка началась!");
         orderService.updateOrderStartById(orderModel.getId());
         return ResponseEntity.ok("Поездка началась!");
     }
@@ -60,9 +60,8 @@ public class TaxiController {
         orderService.updateOrderEndById(orderModel.getId());
         int costTrip = orderService.calcTotalTripSum(orderModel.getId());
         orderService.saveTripSum(orderModel.getId(), costTrip);
-        amqpTemplate.convertAndSend("trip-result", "Поездка завершена. " +
-                "Номер поездки: = " + orderModel.getId() +
-                " Цена поездки: = " + costTrip);
+        amqpTemplate.convertAndSend("trip-result", "Номер поездки: = " + orderModel.getId()
+                + " Цена поездки: = " + costTrip);
         return ResponseEntity.ok("Услуга оказана!");
     }
 

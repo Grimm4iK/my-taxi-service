@@ -50,14 +50,14 @@ public class TaxiDriverServiceImpl implements TaxiDriverService {
     public void saveRatingTrip(long orderId, int rating) {
         long driverId = orderMapper.findDriverIdByOrderId(orderId);
         ratingTaxiDriverMapper.saveRatingTrip(orderId, driverId, rating);
-        calculationAndUpdateAvgRatingDriver(driverId);
+        calcAvgRatingDriver(driverId);
     }
 
     /**
      * Считает средний рейтинг водителя
      * @param driverId Идентификатор водителя
      */
-    private void calculationAndUpdateAvgRatingDriver(long driverId){
+    private void calcAvgRatingDriver(long driverId){
         int gradeAvg = Math.round(ratingTaxiDriverMapper.findAverageGrade(driverId));
         taxiDriverMapper.saveAvgDriverRating(driverId, gradeAvg);
     }
